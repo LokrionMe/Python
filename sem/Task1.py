@@ -5,9 +5,6 @@
 #- 25, 5 -> да
 #- 8,9 -> нет
 
-from this import d
-
-
 a = int(input('Input first number: '))
 b = int(input('Input second number: '))
 if a**2 == b:
