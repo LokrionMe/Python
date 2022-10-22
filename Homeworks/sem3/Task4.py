@@ -9,6 +9,6 @@ a = random.randint(2,100)
 two_bit = ''
 print (a)
 while a!= 0:
-    two_bit = str(a%2) + str(two_bit)
+    two_bit = str(a%2) + two_bit
     a = a//2
 print (two_bit)

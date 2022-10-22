@@ -3,8 +3,6 @@
 # Пример:
 # - [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 
-#практически везде пришлось добавлять round,
-#так как практически всегда выскакивают числа формата "3.2800000000000002"
 import random
 spisok_random = []
 for i in range(random.randint(3, 10)):
@@ -13,10 +11,10 @@ for i in range(random.randint(3, 10)):
 for i in range(len(spisok_random)):
     if spisok_random[i] < 0:
         spisok_random[i] *= (-1)
-        spisok_random[i] = round(spisok_random[i] % 1, 2)
+        spisok_random[i] = spisok_random[i] % 1
         spisok_random[i] *= (-1)
     else:
-        spisok_random[i] = round(spisok_random[i] % 1, 2)
+        spisok_random[i] = spisok_random[i] % 1
 max = spisok_random[0]
 min = spisok_random[0]
 for i in range(1, len(spisok_random)):
