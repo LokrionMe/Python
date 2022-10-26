@@ -9,11 +9,8 @@
 # - список: [], ищем: "123", ответ: -1
 
 k = 0
-str_list = []
-str_found = input('Input string: ')
-with open('file2.txt', 'r') as data:
-    for i in data:
-        str_list.append(i.split('\n')[0])
+str_list = ["qwe", "asd", "zxc", "qwe", "ertqwe"]
+str_found = "qwe"
 for i in range(len(str_list)):
     if str_list[i] == str_found:
         k += 1

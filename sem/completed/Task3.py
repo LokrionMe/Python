@@ -1,10 +1,6 @@
 # Напишите программу, которая принимает на вход число N и выдаёт последовательность из N членов.
 # *Пример:*
 # - Для N = 5: 1, -3, 9, -27, 81
-
-a = 1
-N = int(input('Input integer number: '))
-for i in range(N):
-    print(a, end=' ')
-    a = a * (-3)
-print()
+def input_number():
+    return input('Input number: ')
+print(list((-3)**i for i in range(int(input_number()))))

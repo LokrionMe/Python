@@ -1,7 +1,7 @@
 # Найдите корни квадратного уравнения Ax² + Bx + C = 0 двумя способами:
 # с помощью математических формул нахождения корней квадратного уравнения
 # вводим из файла
-def find_cof(urav:str)->list:
+def find_cof(urav: str) -> list:
     st_list = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹']
     urav = urav.replace(' ', '')
     urav = urav.replace('-', '+-')[:-2]
@@ -14,7 +14,7 @@ def find_cof(urav:str)->list:
     print(urav)
     for i in range(len(urav)):
         if urav[i][0:2] == '-x':
-            urav[i] = urav[i].replace('-x','-1x')
+            urav[i] = urav[i].replace('-x', '-1x')
         if urav[i][0] == 'x':
             urav[i] = urav[i].replace('x', '1x')
     len_st = int(urav[0].split('^')[1])
@@ -41,8 +41,10 @@ def find_cof(urav:str)->list:
                 if j == len(cof_st):
                     cof_st.append(0)
     return cof_st
+
+
 with open('Task17.txt', 'r', encoding="utf-8") as data:
-        ur = data.readline()
+    ur = data.readline()
 print(ur)
 cof_st = find_cof(ur)
 print(cof_st)
@@ -60,4 +62,3 @@ if disc > 0:
     x1 = ((-b)+disc**(1/2))/(2*a)
     x2 = ((-b)-disc**(1/2))/(2*a)
     print(x1, x2)
-

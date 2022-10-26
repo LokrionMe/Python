@@ -1,14 +1,8 @@
-def input_number():
-    return input('Input number: ')
-
 # Напишите программу, которая будет на вход принимать число N и выводить числа от -N до N
 # *Примеры:*
 # - 5 -> -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5
 
+def input_number():
+    return input('Input number: ')
 a = int(input_number())
-for i in range(-a, a+1):
-    print(i, end=', ')
-print('\b\b\n')
-
-
-
+print(list(i for i in range(-a, a+1)))

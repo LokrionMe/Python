@@ -4,10 +4,11 @@
 #- 4, 16 -> да
 #- 25, 5 -> да
 #- 8,9 -> нет
-
-a = int(input('Input first number: '))
-b = int(input('Input second number: '))
-if a**2 == b:
-    print('yes')
+def ch_kv(a, b):
+    return a**2==b
+def input_number():
+    return input('Input number: ')
+if ch_kv(int(input_number()),int(input_number())):
+    print('Yes')
 else:
-    print('no')
+    print('No')

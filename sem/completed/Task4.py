@@ -2,10 +2,6 @@
 #Примеры:
 #- 1, 4, 8, 7, 5 -> 8
 #- 78, 55, 36, 90, 2 -> 90
-
-d = int(input('Input number: '))
-for i in range(4):
-    c = int(input('Input number: '))
-    if c > d:
-        d = c
-print(f'Max = {d}')
+def input_number():
+    return input('Input number: ')
+print(max(list(int(input_number()) for i in range (5))))
