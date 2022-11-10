@@ -19,7 +19,7 @@ print(a, b)
 NOK = 1
 for i in range(len(a)):
     NOK *= a[i]
-# i = 0
+i = 0
 while i < len(b):
     while b[i] in a:
         a.remove(b[i])

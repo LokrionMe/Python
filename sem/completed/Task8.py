@@ -3,8 +3,4 @@
 
 a = str(input('Input string: '))
 b = str(input('Input key: '))
-k = 0
-for i in range(len(a)-1):
-    if a[i:(i + len(b))] == b:
-        k += 1
-print(f'In string "{a}" key "{b}" is {k} times')
+print(f'In string "{a}" key "{b}" is {sum([1 for i in range(len(a)-1) if a[i:(i + len(b))] == b])} times')

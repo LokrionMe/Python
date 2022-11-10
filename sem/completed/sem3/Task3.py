@@ -4,10 +4,10 @@
 # - [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 
 import random
-spisok_random = []
-for i in range(random.randint(3, 10)):
-    spisok_random.append(
-        (random.randint(-10, 10) + random.randint(10, 100)/100))
+spisok_random = [
+    random.randint(-10, 10) + random.randint(10, 100)/100
+    for i in range(random.randint(3, 10))
+]
 for i in range(len(spisok_random)):
     if spisok_random[i] < 0:
         spisok_random[i] *= (-1)
@@ -15,11 +15,4 @@ for i in range(len(spisok_random)):
         spisok_random[i] *= (-1)
     else:
         spisok_random[i] = spisok_random[i] % 1
-max = spisok_random[0]
-min = spisok_random[0]
-for i in range(1, len(spisok_random)):
-    if spisok_random[i] > max:
-        max = spisok_random[i]
-    if spisok_random[i] < min and spisok_random[i] != 0:
-        min = spisok_random[i]
-print(f'{max} - {min} = {round(max - min,2)}')
+print(f'{max(spisok_random)} - {min(spisok_random)} = {round(max(spisok_random) - min(spisok_random),2)}')

@@ -4,8 +4,4 @@
 def input_number():
     return input('Input number: ')
 a = str(bin(int(input_number())))[2::]
-k = 0
-for i in range (len(a)):
-    if a[i] == '1':
-        k += 1
-print(k)
+print(sum([1 for i in range(len(a)) if a[i] == '1']))
