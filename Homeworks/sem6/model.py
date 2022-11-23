@@ -21,12 +21,6 @@ def write_txt(lst):
     with open('phones_numbers.txt', 'w') as data:
         for i in range(len(lst)):
             data.write(lst[i][0]+': '+lst[i][1]+' \n')
-    with open('phones_numbers_mod1.txt', 'w') as data:
-        for i in range(len(lst)):
-            data.write(lst[i][1] + ' ;' + lst[i][0] + ' \n')
-    with open('phones_numbers_mod2.txt', 'w') as data:
-        for i in range(len(lst)):
-            data.write(lst[i][0] + ' - ' + lst[i][1] + ' \n')
 
 
 def en_list(lst):
@@ -75,7 +69,4 @@ def searc_pos(lst):
     for i in range(len(lst)):
         if search.lower() in lst[i].lower():
             search_lst.append(lst[i])
-    if len(search_lst) == 0:
-        view.show_info('Nothing found')
-    else:
-        return search_lst
+    return search_lst

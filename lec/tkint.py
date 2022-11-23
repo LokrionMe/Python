@@ -1,76 +1,80 @@
 import tkinter as tk
 
-# window1 = tk.Tk()
-# greeting = tk.Label(
-#     text= 'Hello world',
-#     width= 20,
-#     height= 5
-# )
-# greeting.pack()
-# name_user = tk.Label(text='Please, enter your name: ')
-# name_user.pack()
-# entry_name = tk.Entry(
-#     width=25
-# )
-# entry_name.pack()
-# name_input = entry_name.get()
-# print(name_input)
-# button_exit = tk.Button(
-#     text='Exit',
-#     width=20,
-#     height=5
-
-# )
-# button_exit.pack()
-# window1.mainloop() 
-# --------------------------
- 
-# border_effects = {
-#     "flat": tk.FLAT,
-#     "sunken": tk.SUNKEN,
-#     "raised": tk.RAISED,
-#     "groove": tk.GROOVE,
-#     "ridge": tk.RIDGE,
-# }
- 
 # window = tk.Tk()
- 
-# for relief_name, relief in border_effects.items():
-#     frame = tk.Frame(master=window, relief=relief, borderwidth=5)
-#     frame.pack(side=tk.LEFT)
-#     label = tk.Label(master=frame, text=relief_name)
-#     label.pack()
- 
-# window.mainloop()
-# --------------------
-# window1 = tk.Tk()
+# window.title('Address Entry Form')
 
-# ent_name = tk.Entry(width= 40)
-# ent_name.pack()
-# ent_name.insert(0,'What is your name?')
-# window1.mainloop()
-# ----------------------
-# window = tk.Tk()
- 
-# frame1 = tk.Frame(master=window, width=200, height=100, bg="red")
-# frame1.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
- 
-# frame2 = tk.Frame(master=window, width=100, bg="yellow")
-# frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
- 
-# frame3 = tk.Frame(master=window, width=50, bg="blue")
-# frame3.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
+# frm_form = tk.Frame(relief = tk.SUNKEN,borderwidth=3)
+# frm_form.pack()
+
+# lst = [
+#     'Name:',
+#     'Second name:',
+#     'Adress1:',
+#     'Adress2:',
+#     'City:',
+#     'Region:',
+#     'Index:',
+#     'Country:'
+# ]
+
+# for i in range(8):
+#     lbl_lst = tk.Label(master = frm_form, text=lst[i])
+#     entry = tk.Entry(master = frm_form,width=60,bg='white',fg='black')
+#     lbl_lst.grid(row=i,column=0,sticky='e')
+#     entry.grid(row=i,column=1)
+
+# frm_buttons = tk.Frame()
+# frm_buttons.pack(fill = tk.X,ipadx=5,ipady=5)
+# btn_submit = tk.Button(master=frm_buttons, text='Submit')
+# btn_submit.pack(side=tk.RIGHT,padx=10,ipadx=30)
+# btn_clear = tk.Button(master=frm_buttons, text='Clear')
+# btn_clear.pack(side=tk.RIGHT,ipadx=30)
+
 # window.mainloop()
-# ----------------
-window = tk.Tk()
- 
-frame = tk.Frame(master=window, width=150, height=150)
-frame.pack()
- 
-label1 = tk.Label(master=frame, text="I'm at (0, 0)", bg="red")
-label1.place(x=0, y=0)
- 
-label2 = tk.Label(master=frame, text="I'm at (75, 75)", bg="yellow")
-label2.place(x=75, y=75)
- 
-window.mainloop()
+
+# ------------------------
+# import random
+
+# def random_points():
+#     lbl_points['text'] = str(random.randint(1,6))
+
+# window.title('Dice')
+# window.rowconfigure([0,1],minsize=50)
+# window.columnconfigure(0,minsize=150)
+
+
+# lbl_points = tk.Label()
+# lbl_points.grid(row=0,column=0,sticky='nsew')
+
+# btn_roll = tk.Button(text='Roll', command=random_points)
+# btn_roll.grid(row=1,column=0)
+# window.mainloop()
+
+# -------------------------------------------
+
+# def fahrenheit_to_cilsius():
+#     fahrenheit = ent_temperature.get()
+#     celsius = (5/9)*(float(fahrenheit)-32)
+#     lbl_result['text'] = f'{round(celsius, 2)} \N{DEGREE CELSIUS}'
+
+# window = tk.Tk()
+# window.title('Converter to fahrenheit')
+# window.resizable(width=False, height=False)
+
+# frm_entry = tk.Frame(master=window)
+# ent_temperature = tk.Entry(master=frm_entry,width=10)
+# lbl_temp = tk.Label(master=frm_entry,text='\N{DEGREE FAHRENHEIT}')
+
+# ent_temperature.grid(row=0,column=0,sticky='e')
+# lbl_temp.grid(row=0,column=1,sticky='w')
+
+# btn_convert = tk.Button(master=window,text='\N{RIGHTWARDS BLACK ARROW}',command=fahrenheit_to_cilsius)
+# lbl_result = tk.Label(master=window, text = '\N{DEGREE CELSIUS}')
+
+# frm_entry.grid(row=0,column=0,padx=10)
+# btn_convert.grid(row=0,column=1,pady=10)
+# lbl_result.grid(row=0,column=2,padx=10)
+
+# window.mainloop()
+
+# --------------------------------------

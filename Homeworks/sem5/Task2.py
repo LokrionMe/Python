@@ -29,7 +29,7 @@ def bot_game(difficult, hod, sweets):
                     if sweets % 29 != 0:
                         take_sweets = sweets % 29
                     else:
-                        take_sweets = sweets - 1
+                        take_sweets = 28
                 else:
                     take_sweets = sweets
             hod += 1
@@ -60,7 +60,7 @@ if game_mode == 1:
         print('Congratulations!\033[31m 2nd\033[0m player winner')
 if game_mode == 2:
     print(' 1. Easy\n 2. Normal\n 3. Hard')
-    diffic = check_num(1, 2)
+    diffic = check_num(1, 3)
     winner = bot_game(diffic, hod, sweets)
     if not winner:
         print('Player win')
