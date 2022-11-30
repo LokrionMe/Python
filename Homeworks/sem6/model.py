@@ -1,72 +1,54 @@
-import view
-import checknum
+import sqlite3
 
 
-def check_dict(a):
-    return list(a.items())
+def connect_to_bd():
+    con = sqlite3.connect('pb.db')
+    cur = con.cursor()
+    return [con, cur]
 
 
-def read_txt():
-    lst = ''
-    with open('phones_numbers.txt', 'r') as data:
-        lst = data.readlines()
-    for i in range(len(lst)):
-        lst[i] = lst[i].replace(' \n', '')
-    return lst
+lst1 = connect_to_bd()
+conn = lst1[0]
+cursor = lst1[1]
 
 
-def write_txt(lst):
-    for i in range(len(lst)):
-        lst[i] = lst[i].split(': ')
-    with open('phones_numbers.txt', 'w') as data:
-        for i in range(len(lst)):
-            data.write(lst[i][0]+': '+lst[i][1]+' \n')
-
-
-def en_list(lst):
-    a = list(enumerate(lst, start=1))
+def search_in_bd(line):
+    data = [row for row in cursor.execute('SELECT * FROM phone_book ORDER BY id')]
     b = ''
-    for i in range(len(a)):
-        b = b + str(a[i][0]) + '.' + a[i][1] + ' \n'
+    for i in range(len(data)):
+        if (line.lower() in data[i][1].lower()) or (line in data[i][2]):
+            b = b + str(data[i][0]) + '. ' + data[i][1] + ': ' + data[i][2] + '\n'
+    if len(b) == 0:
+        return 'Nothing found'
+    else:
+        return b
+
+
+def find_position(column, pos):
+    return cursor.execute(f"SELECT {column} FROM phone_book where id = {pos}").fetchall()[0][0]
+
+
+def update_bd(fio, numb, pos):
+    cursor.execute(
+        f"UPDATE phone_book SET FIO = '{fio}',number = '{numb}' WHERE id = {pos}")
+    conn.commit()
+
+
+def add_contact_to_bd(fio, numb):
+    cursor.execute(
+        f"INSERT INTO phone_book (FIO, number) VALUES ('{fio}', '{numb}')")
+    conn.commit()
+
+
+def delete_from_bd(pos):
+    conn.execute(f"DELETE FROM phone_book WHERE id = {pos}")
+    conn.commit()
+
+
+def show_bd():
+    data = [row for row in cursor.execute(
+        'SELECT * FROM phone_book ORDER BY id')]
+    b = ''
+    for i in range(len(data)):
+        b = b + str(data[i][0]) + '. ' + data[i][1] + ': ' + data[i][2] + '\n'
     return b
-
-
-def input_new_contact(lst):
-    FIO = view.get_info('Input FIO: ')
-    ph_number = str(checknum.check_num('Input phone number: '))
-    lst.append(FIO + ': ' + ph_number)
-    write_txt(lst)
-
-
-def change_name_or_number(lst):
-    b = checknum.check_min_max(f'Choose position: ', 1, len(lst)) - 1
-    c = 0
-    while c != 3:
-        c = checknum.check_min_max(
-            'Change:\n1.Number\n\
-2.Name\n\
-3.Back\n\
-Choose mode: ', 1, 3)
-        if c == 1:
-            new_number = checknum.check_num('Input new number: ')
-            lst[b] = lst[b].split(': ')[0] + ': ' + str(new_number)
-            write_txt(lst)
-        if c == 2:
-            new_name = view.get_info('Input new name: ')
-            lst[b] = new_name + ': ' + lst[b].split(': ')[1]
-            write_txt(lst)
-
-
-def delete_position(lst):
-    b = checknum.check_min_max(f'Choose position to delete: ', 1, len(lst)) - 1
-    lst.pop(b)
-    write_txt(lst)
-
-
-def searc_pos(lst):
-    search_lst = []
-    search = view.get_info('Input number or name: ')
-    for i in range(len(lst)):
-        if search.lower() in lst[i].lower():
-            search_lst.append(lst[i])
-    return search_lst
